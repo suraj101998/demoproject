@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demoproject.response.UserDepartmentResponse;
+import com.example.demoproject.dao.UserDao;
 import com.example.demoproject.entity.Customers;
+import com.example.demoproject.entity.Transactions;
 import com.example.demoproject.service.CustomerService;
-
 import com.example.demoproject.repository.CustomerRepository;
+import com.example.demoproject.repository.TransactionsRepository;
 
 
 @Service
@@ -16,6 +19,12 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
 	private CustomerRepository userRepository;
+	
+	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
+	private TransactionsRepository TransactionsRepository;
 	
 
 	@Override
@@ -31,10 +40,12 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Customers addOrUpdateCustomer(Customers user) {
+	public Customers addCustomer(Customers user) {
 		// TODO Auto-generated method stub
 		return userRepository.save(user);
 	}
+	
+
 
 	@Override
 	public Customers deleteCustomer(int userId) throws Exception {
@@ -53,6 +64,49 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 		return null;
 	}
+	
+	@Override
+	public List<Customers> getCustomerByIdentityType(String id_type) {
+		// TODO Auto-generated method stub
+		return userRepository.getCustomerByIdentityType(id_type);
+	}
+	
+	@Override
+	public List<UserDepartmentResponse> getUserDepartMent() {
+		
+		return userDao.getUserDepartment();
+	}
+
+	@Override
+	public List<UserDepartmentResponse> getLatestTransactions() {
+		// TODO Auto-generated method stub
+		return userDao.getLatestTransactions();
+	}
+
+	@Override
+	public List<Transactions> getCustomerByID(int customer_id) {
+		// TODO Auto-generated method stub
+		return TransactionsRepository.getCustomerByID(customer_id);
+	}
 
 
+	@Override
+	public List<Transactions> getCheckBalance(int customer_id) {
+		// TODO Auto-generated method stub
+		return TransactionsRepository.getCheckBalance(customer_id);
+	}
+
+	@Override
+	public Customers UpdateCustomer(Customers user) {
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
+	}
+
+	@Override
+	public List<Transactions> getTransactionByType(String transaction_type) {
+		// TODO Auto-generated method stub
+		return TransactionsRepository.getTransactionByType(transaction_type);
+	}
+
+	
 }

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 // Entity annotation defines that a class can be mapped to table
 
-@Entity
+@Entity(name = "customers")
 @Table(name = "customers")
 public class Customers {
 
