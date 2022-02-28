@@ -21,7 +21,7 @@ public class UserDepartmentResponse {
 	private int customer_id;
 	private int intial_deposit;
 	private int available_balance;
-	
+	private int serial_number;
 	
 	public String getTransaction_type() {
 		return transaction_type;
@@ -82,6 +82,12 @@ public class UserDepartmentResponse {
 	}
 	public void setAvailable_balance(int available_balance) {
 		this.available_balance = available_balance;
+	}
+	public int getSerial_number() {
+		return serial_number;
+	}
+	public void setSerial_number(int serial_number) {
+		this.serial_number = serial_number;
 	}
 	
 

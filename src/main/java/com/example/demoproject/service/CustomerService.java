@@ -20,6 +20,9 @@ public interface CustomerService {
 	public List<UserDepartmentResponse> getLatestTransactions();//show latest transactions by date
 	public List<Transactions> getCustomerByID(int customer_id);//check individual ministatement
 	public List<Transactions> getCheckBalance(int customer_id);//check balance
-	public List<Transactions> getTransactionByType(String transaction_type);
+	public List<Transactions> getTransactionByType(String transaction_type);//filter by transaction type
+	public Transactions addTransactions(Transactions user);
+	public Transactions UpdateTransactions(Transactions user);
+
 
 }

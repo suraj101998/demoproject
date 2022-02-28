@@ -3,6 +3,7 @@ package com.example.demoproject.repository;
 
 import java.util.List;
 
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -18,5 +19,9 @@ public interface CustomerRepository extends CrudRepository<Customers, Integer> {
 	@Query(value="SELECT * from customers ud where ud.IDENTITY_TYPE = ?1",nativeQuery =true)
 	public List<Customers> getCustomerByIdentityType(@Param("id_type")String id_type);
 
+
+
+
+	
 	
 }

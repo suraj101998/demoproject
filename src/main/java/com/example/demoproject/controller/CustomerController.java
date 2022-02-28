@@ -77,7 +77,7 @@ public class CustomerController {
 		Customers customers = null;
 		
 		try {
-			customers = customerService.addCustomer(user);
+			customers = customerService.UpdateCustomer(user);
 			
 		} catch (Exception ex) {
 			ex.getMessage();
@@ -187,5 +187,34 @@ public class CustomerController {
 		return new ResponseEntity<List<Transactions>>(transactions, HttpStatus.OK);
 	}
 	
+	@PostMapping("/MoneyTransfer") 
+	public ResponseEntity<Transactions> addTransactions(@RequestBody Transactions user){
+		
+		Transactions transactions = null;
+		
+		try {
+			transactions = customerService.addTransactions(user);
+			
+		} catch (Exception ex) {
+			ex.getMessage();
+		}
+		
+		return new ResponseEntity<Transactions>(transactions, HttpStatus.OK);
+	}
+	
+	@PutMapping("/Deposit") 
+	public ResponseEntity<Transactions> UpdateTransactions(@RequestBody Transactions user){
+		
+		Transactions transactions = null;
+		
+		try {
+			transactions = customerService.UpdateTransactions(user);
+			
+		} catch (Exception ex) {
+			ex.getMessage();
+		}
+		
+		return new ResponseEntity<Transactions>(transactions, HttpStatus.OK);
+	}
 	
 }

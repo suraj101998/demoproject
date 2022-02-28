@@ -24,6 +24,9 @@ public class Transactions {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Column(name = "serial_number")
+	private int serial_number;
 
 	@Column(name = "transaction_type")
 	private String transaction_type;
@@ -48,6 +51,16 @@ public class Transactions {
 	
 	@Column(name = "available_balance")
 	private int available_balance;
+	
+	
+	
+	
+	public int getSerial_number() {
+		return serial_number;
+	}
+	public void setSerial_number(int serial_number) {
+		this.serial_number = serial_number;
+	}
 	
 	public String getTransaction_type() {
 		return transaction_type;
@@ -97,9 +110,27 @@ public class Transactions {
 	public void setAvailable_balance(int available_balance) {
 		this.available_balance = available_balance;
 	}
-	public Transactions(String transaction_type, String transaction_id, String transaction_to, Date transaction_date,
-			int transaction_amount, int customer_id, int intial_deposit, int available_balance) {
+	
+	
+	
+//	public Transactions(String transaction_type, String transaction_id, String transaction_to, Date transaction_date,
+//			int transaction_amount, int customer_id, int intial_deposit, int available_balance) {
+//		super();
+//		this.transaction_type = transaction_type;
+//		this.transaction_id = transaction_id;
+//		this.transaction_to = transaction_to;
+//		this.transaction_date = transaction_date;
+//		this.transaction_amount = transaction_amount;
+//		this.customer_id = customer_id;
+//		this.intial_deposit = intial_deposit;
+//		this.available_balance = available_balance;
+//	}
+	
+	
+	public Transactions(int serial_number, String transaction_type, String transaction_id, String transaction_to,
+			Date transaction_date, int transaction_amount, int customer_id, int intial_deposit, int available_balance) {
 		super();
+		this.serial_number = serial_number;
 		this.transaction_type = transaction_type;
 		this.transaction_id = transaction_id;
 		this.transaction_to = transaction_to;
@@ -109,16 +140,31 @@ public class Transactions {
 		this.intial_deposit = intial_deposit;
 		this.available_balance = available_balance;
 	}
+	
+	
 	public Transactions() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "Transactions [transaction_type=" + transaction_type + ", transaction_id=" + transaction_id
-				+ ", transaction_to=" + transaction_to + ", transaction_date=" + transaction_date
-				+ ", transaction_amount=" + transaction_amount + ", customer_id=" + customer_id + ", intial_deposit="
-				+ intial_deposit + ", available_balance=" + available_balance + "]";
+		return "Transactions [serial_number=" + serial_number + ", transaction_type=" + transaction_type
+				+ ", transaction_id=" + transaction_id + ", transaction_to=" + transaction_to + ", transaction_date="
+				+ transaction_date + ", transaction_amount=" + transaction_amount + ", customer_id=" + customer_id
+				+ ", intial_deposit=" + intial_deposit + ", available_balance=" + available_balance + "]";
 	}
+	
+	
+	
+//	@Override
+//	public String toString() {
+//		return "Transactions [transaction_type=" + transaction_type + ", transaction_id=" + transaction_id
+//				+ ", transaction_to=" + transaction_to + ", transaction_date=" + transaction_date
+//				+ ", transaction_amount=" + transaction_amount + ", customer_id=" + customer_id + ", intial_deposit="
+//				+ intial_deposit + ", available_balance=" + available_balance + "]";
+//	}
+
 	
 }

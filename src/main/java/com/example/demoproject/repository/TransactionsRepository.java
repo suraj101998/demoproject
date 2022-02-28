@@ -24,5 +24,5 @@ public interface TransactionsRepository extends CrudRepository<Transactions, Int
 	@Query(value="SELECT * from transactions t where t.transaction_type = ?1",nativeQuery =true)
 	public List<Transactions> getTransactionByType(@Param("transaction_type")String transaction_type);
 
-	
+
 }

@@ -3,7 +3,11 @@ package com.example.demoproject.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.demoproject.response.UserDepartmentResponse;
 import com.example.demoproject.dao.UserDao;
@@ -96,11 +100,32 @@ public class CustomerServiceImpl implements CustomerService{
 		return TransactionsRepository.getCheckBalance(customer_id);
 	}
 
-	@Override
-	public Customers UpdateCustomer(Customers user) {
-		// TODO Auto-generated method stub
-		return userRepository.save(user);
-	}
+//	@Override
+//	public Customers UpdateCustomer(Customers user){
+//		Customers UpdateCustomers= null;
+//		try {
+//			UpdateCustomers = userRepository.findById(user).orElse(null);
+//			if(UpdateCustomers == null) {
+//				throw new Exception("User is not available in database");
+//			}else {
+//				UpdateCustomers.setCustomer_Id(UpdateCustomers.getCustomer_Id());
+//				UpdateCustomers.setName(UpdateCustomers.getName());
+//				UpdateCustomers.setAccount(UpdateCustomers.getAccount());
+//				UpdateCustomers.setId_type(UpdateCustomers.getId_type());
+//				UpdateCustomers.setId_num(UpdateCustomers.getId_num());
+//				UpdateCustomers.setDob(UpdateCustomers.getDob());
+//				UpdateCustomers.setPhone(UpdateCustomers.getPhone());
+//				UpdateCustomers.setEmail(UpdateCustomers.getEmail());
+//				UpdateCustomers.setAddress(UpdateCustomers.getAddress());
+//				UpdateCustomers.setSex(UpdateCustomers.getSex());
+//				
+//				 userRepository.save(user);
+//			}
+//		}catch(Exception ex) {
+//		
+//	}
+//		return null;
+//	}
 
 	@Override
 	public List<Transactions> getTransactionByType(String transaction_type) {
@@ -108,5 +133,23 @@ public class CustomerServiceImpl implements CustomerService{
 		return TransactionsRepository.getTransactionByType(transaction_type);
 	}
 
+	@Override
+	public Customers UpdateCustomer(Customers user) {
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
+	}
+
+	@Override
+	public Transactions addTransactions(Transactions user) {
+		// TODO Auto-generated method stub
+		return TransactionsRepository.save(user);
+	}
+
+	@Override
+	public Transactions UpdateTransactions(Transactions user) {
+		// TODO Auto-generated method stub
+		return TransactionsRepository.save(user);
+	}
+	
 	
 }
